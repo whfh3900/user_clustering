@@ -1,5 +1,4 @@
-﻿use real;
-INSERT INTO `user_info`(uid, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, note) VALUES ("UID00000", 0, 27, 25, 90, 11, 0, 4, 0, 0, 0, 2, 0, 2,"");
+﻿INSERT INTO `user_info`(uid, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, note) VALUES ("UID00000", 0, 27, 25, 90, 11, 0, 4, 0, 0, 0, 2, 0, 2,"");
 INSERT INTO `user_info`(uid, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, note) VALUES ("UID00001", 10, 24, 3, 3, 0, 13, 19, 7, 13, 0, 50, 5, 27,"");
 INSERT INTO `user_info`(uid, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, note) VALUES ("UID00002", 26, 3, 10, 13, 0, 0, 10, 6, 13, 0, 15, 12, 82,"");
 INSERT INTO `user_info`(uid, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, note) VALUES ("UID00003", 0, 85, 34, 43, 9, 5, 3, 0, 0, 7, 1, 0, 1,"");

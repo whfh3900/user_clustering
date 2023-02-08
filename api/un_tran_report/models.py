@@ -14,7 +14,7 @@ class Transaction(models.Model):
     result = models.CharField(max_length=45, blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'transaction'
         unique_together = (('id', 'user_info_uid'),)
 
@@ -37,5 +37,5 @@ class UserInfo(models.Model):
     note = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'user_info'
