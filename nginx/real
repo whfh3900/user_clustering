@@ -1,0 +1,16 @@
+server {
+	listen 9999;
+        server_name nicrealtest;
+
+	charset utf-8;
+
+
+        location /static/ {
+                root /home/manager/real/static;
+        }
+
+        location / {
+                include proxy_params;
+                proxy_pass http://0.0.0.0:8000;
+        }		
+}

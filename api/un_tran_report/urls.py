@@ -9,4 +9,5 @@ from rest_framework.routers import DefaultRouter
 
 urlpatterns = [
    path('api/<str:pk>', UserInfoViewAPI.as_view()),
+   #path(r'api', UserInfoViewAPI.as_view()),
 ]
