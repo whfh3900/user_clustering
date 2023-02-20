@@ -1,12 +1,12 @@
 server {
 	listen 9999;
-        server_name nicrealtest;
+        server_name nicrealtest.ai;
 
 	charset utf-8;
 
 
         location /static/ {
-                root /home/manager/real/static;
+                root /home/manager/real;
         }
 
         location / {
