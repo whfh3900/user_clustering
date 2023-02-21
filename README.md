@@ -8,86 +8,18 @@ API 양식에 맞게 request를 보내면 해당 거래가 특이거래 인지 �
 
 
 ## 사용자 거래유형 보기(GET)
-|:URL:|:Request Body(Example):|:STATE:|:Response Body(Example):|
+|URL|Request Body(Example)|STATE|:Response Body(Example):|
 |------|---|---|---|
-|/api/{UID}||200|{
-    "data": {
-        "uid": "{UID}",
-        "c0": 19,
-        "c1": 4,
-        "c2": 6,
-        "c3": 23,
-        "c4": 0,
-        "c5": 0,
-        "c6": 10,
-        "c7": 2,
-        "c8": 24,
-        "c9": 0,
-        "c10": 14,
-        "c11": 17,
-        "c12": 61,
-        "note": ""
-    },
-    "state": 200,
-    "error": null
-}|
-|/api/{UID}||404|{
-    "data": null,
-    "state": 404,
-    "error": "No UserInfo matches the given query."
-}|
+|/api/{UID}||200|{"data": {"uid": "{UID}","c0": 19, ... "c12": 61,"note": ""},"state": 200,"error": null}|
+|/api/{UID}||404|{"data": null,"state": 404,"error": "No UserInfo matches the given query."}|
 
 
 ## 사용자 거래유형 생성 및 특이거래 알림(POST)
 |:URL:|:Request Body(Example):|:STATE:|:Response Body(Example):|
 |------|---|---|---|
-|/api/{UID}|{
- "bas_ym":202203,
- "age_dc":"60",
- "gender":1,
- "bas_dt":20,
- "tran_md":"입금",
- "ats_kdcd_tl":"펌뱅킹 입금이체",
- "dps_trm_am":8,
- "text_1":"소득"
-}|200|{
-    "result": false,
-    "state": 201,
-    "error": null
-}|
-|/api/{UID}|{
- "bas_ym":202203,
- "age_dc":"60",
- "gender":1,
- "bas_dt":20,
- "tran_md":"입금",
- "ats_kdcd_tl":"펌뱅킹 입금이체",
- "dps_trm_am":8,
- "text_1":"소득"
-}|400|{
-    "result": null,
-    "state": 400,
-    "error": "'출금'"
-}|
-|/api/{UID}|{
- "bas_ym":202203,
- "age_dc":"60",
- "gender":1,
- "bas_dt":20,
- "tran_md":"입금",
- "ats_kdcd_tl":"펌뱅킹 입금이체",
- "dps_trm_am":8,
- "text_1":"소득"
-}|404|{
-    "result": null,
-    "error": {
-        "bas_ym": [
-            "A valid integer is required."
-        ]
-    },
-    "state": 404
-}|
-
+|/api/{UID}|{"bas_ym":202203,"age_dc":"60","gender":1,"bas_dt":20,"tran_md":"입금","ats_kdcd_tl":"펌뱅킹 입금이체","dps_trm_am":8,"text_1":"소득"}|200|{"result": false,"state": 201,"error": null}|
+|/api/{UID}|{"bas_ym":202203,"age_dc":"60","gender":1,"bas_dt":20,"tran_md":"입금","ats_kdcd_tl":"펌뱅킹 입금이체","dps_trm_am":8,"text_1":"소득"}|400|{"result": null,"state": 400,"error": "'출금'"}|
+|/api/{UID}|{"bas_ym":202203,"age_dc":"60","gender":1,"bas_dt":20,"tran_md":"입금","ats_kdcd_tl":"펌뱅킹 입금이체","dps_trm_am":8,"text_1":"소득"}|404|{"result": null,"error": {"bas_ym": ["A valid integer is required."]},"state": 404}|
 
 
 ## 정보
