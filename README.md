@@ -1,2 +1,95 @@
 # real
-2023년 창업도약패키지 리얼 프로젝트.
+
+>2023년 창업도약패키지 Real? 프로젝트.
+본 프로젝트에서는 django를 이용하여 Real?의 rest_framework 벡앤드를 구현하였습니다.
+API 양식에 맞게 request를 보내면 해당 거래가 특이거래 인지 아닌지 판단하여 결과를 respone 해줍니다,
+
+![nicreal](./png/image.png)
+
+
+## 사용자 거래유형 보기(GET)
+|:URL:|:Request Body(Example):|:STATE:|:Response Body(Example):|
+|------|---|---|---|
+|/api/{UID}||200|{
+    "data": {
+        "uid": "{UID}",
+        "c0": 19,
+        "c1": 4,
+        "c2": 6,
+        "c3": 23,
+        "c4": 0,
+        "c5": 0,
+        "c6": 10,
+        "c7": 2,
+        "c8": 24,
+        "c9": 0,
+        "c10": 14,
+        "c11": 17,
+        "c12": 61,
+        "note": ""
+    },
+    "state": 200,
+    "error": null
+}|
+|/api/{UID}||404|{
+    "data": null,
+    "state": 404,
+    "error": "No UserInfo matches the given query."
+}|
+
+
+## 사용자 거래유형 생성 및 특이거래 알림(POST)
+|:URL:|:Request Body(Example):|:STATE:|:Response Body(Example):|
+|------|---|---|---|
+|/api/{UID}|{
+ "bas_ym":202203,
+ "age_dc":"60",
+ "gender":1,
+ "bas_dt":20,
+ "tran_md":"입금",
+ "ats_kdcd_tl":"펌뱅킹 입금이체",
+ "dps_trm_am":8,
+ "text_1":"소득"
+}|200|{
+    "result": false,
+    "state": 201,
+    "error": null
+}|
+|/api/{UID}|{
+ "bas_ym":202203,
+ "age_dc":"60",
+ "gender":1,
+ "bas_dt":20,
+ "tran_md":"입금",
+ "ats_kdcd_tl":"펌뱅킹 입금이체",
+ "dps_trm_am":8,
+ "text_1":"소득"
+}|400|{
+    "result": null,
+    "state": 400,
+    "error": "'출금'"
+}|
+|/api/{UID}|{
+ "bas_ym":202203,
+ "age_dc":"60",
+ "gender":1,
+ "bas_dt":20,
+ "tran_md":"입금",
+ "ats_kdcd_tl":"펌뱅킹 입금이체",
+ "dps_trm_am":8,
+ "text_1":"소득"
+}|404|{
+    "result": null,
+    "error": {
+        "bas_ym": [
+            "A valid integer is required."
+        ]
+    },
+    "state": 404
+}|
+
+
+
+## 정보
+
+최승언 – [@velog](https://velog.io/@csu5216) – csu5216@gmail.com
