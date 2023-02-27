@@ -90,14 +90,42 @@ class UniqueTransactionDetect():
 
     def predict_result(self, x):
 
-        age_dc = age_dict[x['age_dc']]
+        ### 나이대 검사
+        try:
+            age_dc = age_dict[x['age_dc']]
+        except Exception as e:
+            return {"age_dc": ["A valid string is required."]}
+
+        ### 성별 검사
         gender = x['gender']
+        if type(gender) is not int:
+            return {"gender": ["A valid integer is required."]}
+
+        ### 거래일자 검사
+        if len(str(x['bas_ym'])) != 6:
+            return {"bas_ym": ["A valid integer is required."]}
         bas_mon = int(str(x['bas_ym'])[-2:])
-        tran_md = md_dict[x['tran_md']]
+
+        ### 거래구분 검사
+        try:
+            tran_md = md_dict[x['tran_md']]
+        except Exception as e:
+            return {"tran_md": ["A valid string is required."]}
+
+        ### 자동이체구분명 검사
+
+        if type(x['ats_kdcd_dtl']) is not str:
+            return {"ats_kdcd_dtl": ["A valid string is required."]}
         akd_pro = ats_kdcd_dtl(x['ats_kdcd_dtl'])
-        am_pro = np.digitize(x['dps_trn_am'], bins=[0, 9, 49, 99, 499, 999, 4999, 9999, 49900])
+
+        ### 거래금액 검사
+        try:
+            am_pro = np.digitize(x['dps_trn_am'], bins=[0, 9, 49, 99, 499, 999, 4999, 9999, 49900])
+        except Exception as e:
+            return {"dps_trn_am": ["A valid integer is required."]}
 
         def text1_preprocessing(trans_md, text):
+            text = str(text)
             text = find_null(text)
             text = ascii_check(text)
             text = change_upper(text)
@@ -114,6 +142,7 @@ class UniqueTransactionDetect():
                 result = self.nwt.text_tagging(text, trans_md)
                 # text = nk.name_check(text)
             return tests_dict[result[0]]  # 대분류만
+
         text_2 = text1_preprocessing(x['tran_md'], x['text_1'])
         week = weekday(x['bas_ym'], x['bas_dt'])
 
