@@ -100,4 +100,4 @@ class UserInfoViewAPI(APIView):
 
         else:
             # 값의 형식이 잘못 됬을때(ex. tran_md -> 출금 X, 지급 O)
-            return Response({"result": None, "state": 400, "error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"result": None, "state": 400, "error": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
